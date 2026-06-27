@@ -1,0 +1,474 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accesibilidad Subte CABA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        .logo {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .hero {
+            background: linear-gradient(135deg, #4b2c72 0%, #6a4ca1 100%);
+            color: #ffffff;
+            padding: 4rem 0 3rem;
+        }
+        .hero h1 {
+            font-weight: 700;
+        }
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            border: 1px solid #dee2e6;
+            border-radius: 18px;
+            padding: 1.5rem;
+            background: #ffffff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+        }
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #e7e0f7;
+            color: #4b2c72;
+            font-weight: 700;
+            margin-bottom: 0.85rem;
+            font-size: 1.5rem; /* Tamaño de emoji ajustado */
+            line-height: 1;    /* Centrado perfecto */
+        }
+        .service-table th,
+        .service-table td {
+            vertical-align: middle;
+        }
+        .chat-widget {
+            position: sticky;
+            top: 1rem;
+            border-radius: 18px;
+            border: 1px solid #dee2e6;
+            background: #ffffff;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+        }
+        .chat-header {
+            background: #4b2c72;
+            color: #ffffff;
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+            padding: 1rem;
+        }
+        .chat-body {
+            height: 320px;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+        .chat-message {
+            margin-bottom: 0.9rem;
+            line-height: 1.5;
+        }
+        .chat-message.user {
+            text-align: right;
+        }
+        .chat-message.user .message-bubble {
+            background: #6a4ca1;
+            color: #ffffff;
+            margin-left: auto;
+        }
+        .chat-message.bot .message-bubble {
+            background: #f1f3f5;
+            color: #212529;
+        }
+        .message-bubble {
+            display: inline-block;
+            padding: 0.85rem 1rem;
+            border-radius: 18px;
+            max-width: 100%;
+        }
+        .chat-input {
+            border-top: 1px solid #dee2e6;
+            padding: 0.75rem;
+        }
+        .badge-feature {
+            font-size: 0.85rem;
+            padding: 0.55rem 0.85rem;
+            border-radius: 999px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white border-bottom" data-bs-theme="light">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/DevVisionIcon.png" alt="Logo" class="logo">
+                <span class="fw-bold">TechSolutions</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav" aria-label="Abrir menú de navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="lineas" data-bs-toggle="dropdown">Líneas</a>
+                        <ul class="dropdown-menu" aria-labelledby="lineas">
+                            <li><a class="dropdown-item" href="#">Línea A</a></li>
+                            <li><a class="dropdown-item" href="#">Línea B</a></li>
+                            <li><a class="dropdown-item" href="https://carlosmarinaro.github.io/LINEA-C/#">Línea C</a></li>
+                            <li><a class="dropdown-item" href="https://santiago414.github.io/LineaDpaginaWeb/">Línea D</a></li>
+                            <li><a class="dropdown-item" href="#linea-e">Línea E</a></li>
+                            <li><a class="dropdown-item" href="https://valentinasalinasc.github.io/lineahsubte/">Línea H</a></li>
+                        </ul>
+                    </li>
+                     <li class="nav-item"><a class="nav-link" href="#">Horarios</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="viajes.html">Consulta de Viajes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="accesibilidad.html">Accesibilidad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero text-center">
+        <div class="container">
+            <h1>Accesibilidad y servicios esenciales del Subte</h1>
+            <p class="lead">Toda la información sobre baños, oficinas, locales gastronómicos, áreas de espera, estacionamiento y asistencia para personas con discapacidad.</p>
+        </div>
+    </section>
+
+    <main class="container my-5">
+        <div class="row gy-4">
+            <div class="col-lg-8">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">🛁</div>
+                            <h5>Baños accesibles</h5>
+                            <p>Estaciones principales cuentan con baños públicos, cambiadores y accesos adaptados para personas con movilidad reducida.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">ℹ️</div>
+                            <h5>Oficinas de información</h5>
+                            <p>Atención personalizada para consultas sobre rutas, horarios, accesos y servicios disponibles.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">☕</div>
+                            <h5>Locales gastronómicos</h5>
+                            <p>Cafés, kioscos y puestos de snacks en estaciones y alrededores para mayor confort durante el viaje.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">🪑</div>
+                            <h5>Áreas de espera</h5>
+                            <p>Zonas con asientos y espacios cubiertos para una espera más cómoda y segura.</p>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">🚗</div>
+                            <h5>Estacionamiento y bicicleteros</h5>
+                            <p>Cocheras y espacios para bicicletas cercanos a estaciones estratégicas para facilitar combinaciones de viaje.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <section id="servicios" class="mt-5">
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="badge bg-primary badge-feature me-2">Servicios obligatorios</span>
+                        <h2 class="mb-0">Servicios y facilidades esenciales</h2>
+                    </div>
+                    <p>Estas facilidades deben estar presentes y señalizadas claramente dentro de las estaciones y sus cercanías.</p>
+                    <div class="table-responsive">
+                        <table class="table service-table align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Servicio</th>
+                                    <th>Qué ofrece</th>
+                                    <th>Beneficio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Baños</td>
+                                    <td>Sanitarios públicos, cambiadores y baños adaptados para movilidad reducida.</td>
+                                    <td>Confort y accesibilidad para todas las personas.</td>
+                                </tr>
+                                <tr>
+                                    <td>Oficinas de información</td>
+                                    <td>Atención sobre rutas, tarifas, accesos y servicios especiales.</td>
+                                    <td>Resolución rápida de dudas y mejores recomendaciones de viaje.</td>
+                                </tr>
+                                <tr>
+                                    <td>Locales gastronómicos</td>
+                                    <td>Cafeterías, kioscos y tiendas de conveniencia en estaciones clave.</td>
+                                    <td>Opción de compra y descanso antes o después del viaje.</td>
+                                </tr>
+                                <tr>
+                                    <td>Áreas de espera</td>
+                                    <td>Espacios con asientos, iluminación y refugio de la intemperie.</td>
+                                    <td>Mayor comodidad mientras esperás el tren.</td>
+                                </tr>
+                                <tr>
+                                    <td>Estacionamiento</td>
+                                    <td>Estacionamientos, cocheras y bicicleteros cerca de estaciones importantes.</td>
+                                    <td>Mejor conexión multimodal y menor tiempo de traslado.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="mt-5">
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="badge bg-success badge-feature me-2">Accesibilidad</span>
+                        <h2 class="mb-0">Accesibilidad en las líneas</h2>
+                    </div>
+                    <p>El Subte de Buenos Aires avanza en accesibilidad mediante:</p>
+                    <ul>
+                        <li><strong>Ascensores y rampas</strong> en numerosas estaciones de las líneas A, B, C, D, E y H.</li>
+                        <li><strong>Torniquetes accesibles</strong> para sillas de ruedas y cochecitos.</li>
+                        <li><strong>Pisos táctiles</strong> en andenes y accesos para usuarios con discapacidad visual.</li>
+                        <li><strong>Anuncios sonoros</strong> y paneles visuales para información de destino y cortes de servicio.</li>
+                        <li><strong>Señalización clara</strong> y personal de asistencia en estaciones clave.</li>
+                    </ul>
+                    <p>Estas medidas permiten que más personas viajen con mayor seguridad y autonomía.</p>
+                </section>
+
+                <section class="mt-5">
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="badge bg-secondary text-white badge-feature me-2">Estaciones</span>
+                        <h2 class="mb-0">Servicios por línea y estación</h2>
+                    </div>
+                    <p>Ubicaciones recomendadas de servicios dentro de cada línea de Subte:</p>
+                    <div class="table-responsive">
+                        <table class="table table-bordered align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Línea</th>
+                                    <th>Estaciones con baños</th>
+                                    <th>Estaciones con oficinas de información</th>
+                                    <th>Estaciones con locales gastronómicos</th>
+                                    <th>Estaciones con ascensores / accesos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A</td>
+                                    <td>Plaza Miserere, Perú, Congreso</td>
+                                    <td>Plaza Miserere, Perú</td>
+                                    <td>Congreso, Perú</td>
+                                    <td>Plaza Miserere, Perú, Congreso</td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>Pueyrredón, Callao, Carlos Pellegrini</td>
+                                    <td>Pueyrredón, Carlos Pellegrini</td>
+                                    <td>Callao, Carlos Pellegrini</td>
+                                    <td>Pueyrredón, Callao, Carlos Pellegrini</td>
+                                </tr>
+                                <tr>
+                                    <td>C</td>
+                                    <td>Retiro, Constitución</td>
+                                    <td>Retiro, Constitución</td>
+                                    <td>Retiro</td>
+                                    <td>Retiro, Constitución</td>
+                                </tr>
+                                <tr>
+                                    <td>D</td>
+                                    <td>Cathedral, 9 de Julio, Palermo</td>
+                                    <td>9 de Julio, Palermo</td>
+                                    <td>9 de Julio, Palermo</td>
+                                    <td>9 de Julio, Palermo, Catedral</td>
+                                </tr>
+                                <tr>
+                                    <td>E</td>
+                                    <td>Bolívar, Plaza de Mayo</td>
+                                    <td>Bolívar, Plaza de Mayo</td>
+                                    <td>Bolívar</td>
+                                    <td>Bolívar, Plaza de Mayo</td>
+                                </tr>
+                                <tr>
+                                    <td>H</td>
+                                    <td>Corrientes, Once, Córdoba</td>
+                                    <td>Corrientes, Once</td>
+                                    <td>Once, Córdoba</td>
+                                    <td>Corrientes, Once, Córdoba</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-muted small">Estos ejemplos muestran dónde suele haber servicios dentro de cada línea. En la práctica, las estaciones céntricas concentran más servicios y accesos.</p>
+                </section>
+
+                <section class="mt-5">
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="badge bg-warning text-dark badge-feature me-2">Complementarios</span>
+                        <h2 class="mb-0">Servicios complementarios</h2>
+                    </div>
+                    <p>Complementamos la experiencia con funcionalidades digitales y de atención:</p>
+                    <ul>
+                        <li><strong>Preguntas frecuentes</strong> con respuestas rápidas sobre accesos, horarios y servicios.</li>
+                        <li><strong>Alertas en tiempo real</strong> sobre demoras, interrupciones y cambios en el servicio.</li>
+                        <li><strong>Mapa interactivo</strong> con ubicación de ascensores, baños y puntos de atención.</li>
+                        <li><strong>Soporte multicanal</strong> a través de teléfono, email y redes sociales.</li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="col-lg-4 mt-5 mt-lg-0">
+                <div class="chat-widget" aria-label="Chatbot de asistencia">
+                    <div class="chat-header">
+                        <h5 class="mb-1">Asistente Virtual</h5>
+                        <small>Chatbot para consultas rápidas</small>
+                    </div>
+                    <div id="chatBody" class="chat-body" aria-live="polite"></div>
+                    <div class="chat-input">
+                        <div class="input-group">
+                            <input id="chatInput" type="text" class="form-control" placeholder="Escribí tu pregunta..." aria-label="Pregunta al chatbot">
+                            <button id="sendBtn" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-info mt-4" role="alert">
+                    <h6 class="alert-heading">Consejos</h6>
+                    <p>Probá preguntas como: "¿Dónde hay baños?", "¿Hay ascensores?", "¿Horario de atención?" o "¿Dónde está la oficina de información?".</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background-color: #3a3a3a; color: #e0e0e0; padding: 3rem 0 1.5rem;">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-3 mb-4">
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                        <img src="img/DevVisionIcon.png" alt="TechSolutions" style="height: 40px; margin-right: 10px;">
+                        <h5 style="margin: 0; font-weight: 700;">TechSolutions</h5>
+                    </div>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">Síguenos en nuestras distintas redes sociales:</p>
+                    <a href="#" style="color: #e0e0e0; text-decoration: none; display: inline-block; margin-top: 0.5rem;">
+                        <strong>f Facebook</strong>
+                    </a>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <h5 style="font-weight: 700; margin-bottom: 1.5rem;">Dirección</h5>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">
+                        Av. Siempre Viva 742,<br>
+                        Buenos Aires, Argentina
+                    </p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <h5 style="font-weight: 700; margin-bottom: 1.5rem;">Teléfono de contacto</h5>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">
+                        +54 11 4444-5555<br>
+                        Lunes a Viernes 09:00 - 18:00
+                    </p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <h5 style="font-weight: 700; margin-bottom: 1.5rem;">Medios de pago</h5>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">
+                        Aceptamos tarjetas de crédito, débito y transferencias bancarias.
+                    </p>
+                </div>
+            </div>
+
+            <hr style="border-color: #555; margin: 2rem 0;">
+
+            <div class="text-center">
+                <p style="font-size: 0.85rem; color: #999;">
+                    © 2024 TechSolutions - Todos los derechos reservados - Prohibida la reproducción total o parcial sin permiso
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const respuestasChat = [
+            {pregunta: /baños|sanitarios|toilette/i, respuesta: 'Los baños están disponibles en estaciones seleccionadas; algunos son accesibles y cuentan con señalización clara para movilidad reducida.'},
+            {pregunta: /oficina|información|info/i, respuesta: 'Las oficinas de información se ubican en estaciones principales y brindan orientación sobre rutas, horarios y accesibilidad.'},
+            {pregunta: /gastronómicos|caf[eé]|kiosco|comida/i, respuesta: 'Hay locales gastronómicos y kioscos en estaciones centrales, ideales para comprar snacks, bebidas y tomar un descanso.'},
+            {pregunta: /áreas de espera|espera|asientos/i, respuesta: 'Las áreas de espera con asientos y espacios cubiertos están disponibles en estaciones de mayor flujo para mayor confort.'},
+            {pregunta: /estacionamiento|cocheras|bicicletero/i, respuesta: 'El Subte cuenta con estacionamientos y bicicleteros cercanos a varias estaciones para facilitar la conexión multimodal.'},
+            {pregunta: /accesibilidad|ascensores|rampas/i, respuesta: 'El sistema ofrece ascensores, rampas, pisos táctiles y torniquetes accesibles en muchas estaciones de las líneas A, B, C, D, E y H.'},
+            {pregunta: /horarios|horario/i, respuesta: 'Los horarios del Subte varían según la línea y el día. Consultá siempre la información actualizada en la web oficial o en la estación.'},
+            {pregunta: /faq|preguntas frecuentes|preguntas/i, respuesta: 'En esta página podés usar el chatbot para resolver dudas frecuentes sobre servicios, accesos y horarios.'},
+            {pregunta: /retraso|demora|problema/i, respuesta: 'Para demoras y problemas en tiempo real, revisá el estado de las líneas en la página principal o en las alertas oficiales.'}
+        ];
+
+        const chatBody = document.getElementById('chatBody');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+
+        function agregarMensaje(texto, tipo = 'bot') {
+            const clase = tipo === 'user' ? 'user' : 'bot';
+            const mensaje = document.createElement('div');
+            mensaje.className = `chat-message ${clase}`;
+            mensaje.innerHTML = `<div class="message-bubble">${texto}</div>`;
+            chatBody.appendChild(mensaje);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function obtenerRespuesta(input) {
+            const texto = input.trim();
+            if (!texto) {
+                return 'Por favor escribí una pregunta para que te pueda ayudar.';
+            }
+            const encontrado = respuestasChat.find(item => item.pregunta.test(texto));
+            return encontrado ? encontrado.respuesta : 'Lo siento, no tengo esa respuesta exacta. Probá con otra pregunta como "¿Dónde hay baños?" o "¿Hay ascensores?".';
+        }
+
+        function manejarEnvio() {
+            const texto = chatInput.value;
+            if (!texto.trim()) return;
+            agregarMensaje(texto, 'user');
+            const respuesta = obtenerRespuesta(texto);
+            setTimeout(() => {
+                agregarMensaje(respuesta, 'bot');
+            }, 300);
+            chatInput.value = '';
+            chatInput.focus();
+        }
+
+        sendBtn.addEventListener('click', manejarEnvio);
+        chatInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                manejarEnvio();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            agregarMensaje('Hola, soy el asistente virtual. Preguntame sobre accesibilidad, servicios y horarios en el Subte.', 'bot');
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
