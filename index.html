@@ -278,7 +278,7 @@
                         <a class="nav-link" href="accesibilidad.html">Accesibilidad</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
+                        <a class="nav-link" href="#footer">Contacto</a>
                     </li>
                 </ul>
             </div>
@@ -396,12 +396,12 @@
     <script>
         // Array de datos de las líneas
         const estadoLineas = [
-            {id: 'A', nombre: 'Línea A', color: '#00aeef', estado: 'Excelente', texto: 'Servicio normal sin novedades.', nivel: 'good'},
-            {id: 'B', nombre: 'Línea B', color: '#ed1c24', estado: 'Demoras', texto: 'Retrasos por obras en estaciones.', nivel: 'alert'},
-            {id: 'C', nombre: 'Línea C', color: '#0054a6', estado: 'Bien', texto: 'Servicio operativo y estable.', nivel: 'good'},
-            {id: 'D', nombre: 'Línea D', color: '#00a859', estado: 'Problema', texto: 'Interrupción temporal en el servicio.', nivel: 'alert'},
-            {id: 'E', nombre: 'Línea E', color: '#662483', estado: 'Bien', texto: 'Sin incidencias en este momento.', nivel: 'good'},
-            {id: 'H', nombre: 'Línea H', color: '#ffcd00', estado: 'Incidencia', texto: 'Demoras leves por congestión.', nivel: 'alert'}
+            {id: 'A', nombre: 'Línea A', color: '#00aeef', estado: 'Excelente', texto: 'Servicio normal sin novedades.', nivel: 'good', url: '#linea-a'},
+            {id: 'B', nombre: 'Línea B', color: '#ed1c24', estado: 'Demoras', texto: 'Retrasos por obras en estaciones.', nivel: 'alert', url: '#linea-b'},
+            {id: 'C', nombre: 'Línea C', color: '#0054a6', estado: 'Bien', texto: 'Servicio operativo y estable.', nivel: 'good', url: 'https://carlosmarinaro.github.io/LINEA-C/#'},
+            {id: 'D', nombre: 'Línea D', color: '#00a859', estado: 'Problema', texto: 'Interrupción temporal en el servicio.', nivel: 'alert', url: 'https://santiago414.github.io/LineaDpaginaWeb/'},
+            {id: 'E', nombre: 'Línea E', color: '#662483', estado: 'Bien', texto: 'Sin incidencias en este momento.', nivel: 'good', url: '#linea-e'},
+            {id: 'H', nombre: 'Línea H', color: '#ffcd00', estado: 'Incidencia', texto: 'Demoras leves por congestión.', nivel: 'alert', url: 'https://valentinasalinasc.github.io/lineahsubte/'}
         ];
 
         function crearTarjetaLinea(linea) {
@@ -410,7 +410,7 @@
 
             return `
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="#linea-${linea.id.toLowerCase()}" class="enlace-tarjeta">
+                    <a href="${linea.url}" class="enlace-tarjeta">
                         <div class="tarjeta-estado text-center h-100">
                             <div class="circulo-linea" style="background:${linea.color};">${linea.id}</div>
                             <h5 class="mb-1">${linea.nombre}</h5>
@@ -527,7 +527,7 @@
     </script>
 
     <!-- Footer -->
-    <footer style="background-color: #3a3a3a; color: #e0e0e0; padding: 3rem 0 1.5rem; margin-top: 4rem;">
+    <footer id="footer" style="background-color: #3a3a3a; color: #e0e0e0; padding: 3rem 0 1.5rem; margin-top: 4rem;">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-md-3 mb-4">
