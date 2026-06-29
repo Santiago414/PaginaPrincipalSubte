@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subte de CABA - Horarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* --- ESTILOS GENERALES (mismos que el index) --- */
+        html {
+            font-size: 100%;
+        }
+        body {
+            background: linear-gradient(135deg, #f6efff 0%, #efe5ff 100%);
+        }
+        .logo {
+            height: 2.5rem;
+            margin-right: 0.625rem;
+        }
+        .titulo-seccion {
+            font-size: 1.9rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* --- TARJETAS (mismas que el index) --- */
+        .tarjeta-estado {
+            border: 1px solid #e9ecef;
+            border-radius: 1rem;
+            padding: 1.5rem 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background: #ffffff;
+        }
+        .tarjeta-estado:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --- CÍRCULOS DE LÍNEA (mismos que el index, con variante chica) --- */
+        .circulo-linea {
+            width: 3.75rem;
+            height: 3.75rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0 auto 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        .circulo-linea.chico {
+            width: 2.2rem;
+            height: 2.2rem;
+            font-size: 0.95rem;
+            margin: 0;
+            box-shadow: none;
+        }
+
+        /* --- HORARIOS --- */
+        .franja-horas {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #212529;
+            letter-spacing: 0.01em;
+        }
+        .franja-horas small {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6c757d;
+        }
+
+        /* --- ESTADO EN VIVO (usa los mismos colores de estado del index) --- */
+        .badge-estado {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.2rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        .badge-estado.abierto { background: #e8f5ea; color: #1e7e34; border: 1px solid #28a745; }
+        .badge-estado.cerrado { background: #fdeaea; color: #b02a37; border: 1px solid #dc3545; }
+        .estado-dot { width: 0.7rem; height: 0.7rem; border-radius: 50%; }
+        .estado-dot.on { background: #28a745; }
+        .estado-dot.off { background: #dc3545; }
+
+        .tabla-horarios td { vertical-align: middle; }
+        .linea-cell { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 600; }
+
+        /* --- RESPONSIVE (igual que el index) --- */
+        @media all and (max-width: 840px) {
+            html { font-size: 95%; }
+            .titulo-seccion { font-size: 1.6rem; }
+            .franja-horas { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white border-bottom" data-bs-theme="light">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/DevVisionIcon.png" alt="Logo Empresa" class="logo">
+                <span class="fw-bold">TechSolutions</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Abrir menú de navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="lineas" data-bs-toggle="dropdown">
+                            Líneas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html#linea-a">Línea A</a></li>
+                            <li><a class="dropdown-item" href="index.html#linea-b">Línea B</a></li>
+                            <li><a class="dropdown-item" href="https://carlosmarinaro.github.io/LINEA-C/#">Línea C</a></li>
+                            <li><a class="dropdown-item" href="https://santiago414.github.io/LineaDpaginaWeb/">Línea D</a></li>
+                            <li><a class="dropdown-item" href="index.html#linea-e">Línea E</a></li>
+                            <li><a class="dropdown-item" href="https://valentinasalinasc.github.io/lineahsubte/">Línea H</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="horarios.html">Horarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="viajes.html">Consulta de Viajes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="accesibilidad.html">Accesibilidad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#footer">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container my-5">
+        <div class="text-center mb-4">
+            <h1 class="titulo-seccion">Horarios del Subte</h1>
+            <p class="text-muted">Franjas de servicio de la red de subtes y premetro, primer y último tren y frecuencias por línea.</p>
+        </div>
+
+        <div class="text-center mb-5">
+            <span class="badge-estado cerrado" id="estado-banner">
+                <span class="estado-dot off" id="estado-dot"></span>
+                <span id="estado-texto">Consultando estado del servicio…</span>
+            </span>
+        </div>
+
+        <div class="row g-4 justify-content-center mb-5">
+            <div class="col-md-5 col-sm-8">
+                <div class="tarjeta-estado text-center h-100">
+                    <h5 class="fw-bold mb-2">Lunes a sábado</h5>
+                    <div class="franja-horas">05:00 <small>a</small> 23:00</div>
+                    <p class="text-muted mb-0 mt-2">El último tren parte de cada terminal cerca de las 22:45.</p>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-8">
+                <div class="tarjeta-estado text-center h-100">
+                    <h5 class="fw-bold mb-2">Domingos y feriados</h5>
+                    <div class="franja-horas">08:00 <small>a</small> 22:00</div>
+                    <p class="text-muted mb-0 mt-2">Los feriados rigen con el horario de los domingos.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-4">
+            <h2 class="titulo-seccion">Frecuencias por Línea</h2>
+            <p class="text-muted">Tiempo aproximado de espera entre formaciones. Primer y último tren de lunes a sábado.</p>
+        </div>
+
+        <div class="table-responsive mb-2">
+            <table class="table tabla-horarios align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Línea</th>
+                        <th scope="col">Recorrido</th>
+                        <th scope="col" class="text-center">Primer tren</th>
+                        <th scope="col" class="text-center">Último tren</th>
+                        <th scope="col" class="text-center">Hora pico</th>
+                        <th scope="col" class="text-center">Resto del día</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-body"></tbody>
+            </table>
+        </div>
+        <p class="text-muted small">Los domingos y feriados las frecuencias son mayores que las de hora pico.</p>
+
+        <div class="tarjeta-estado mt-4">
+            <h5 class="fw-bold mb-2">Premetro</h5>
+            <p class="mb-2">El Premetro conecta con la red en la estación <strong>Plaza de los Virreyes</strong> de la Línea E. Funciona de <strong>lunes a sábado de 05:30 a 22:30</strong> y <strong>domingos y feriados de 08:00 a 22:00</strong>, con una frecuencia aproximada de 8 a 12 minutos.</p>
+            <p class="text-muted small mb-0">Horarios orientativos. El servicio puede modificarse por obras, eventos especiales o feriados. Para el estado del servicio en tiempo real, consultá la <a href="index.html">página principal</a>.</p>
+        </div>
+    </section>
+
+    <script>
+        const estadoLineas = {
+            A: { color: '#00aeef', dark: false, ruta: 'Plaza de Mayo ↔ San Pedrito', pico: '3 a 5 min', resto: '6 a 10 min' },
+            B: { color: '#ed1c24', dark: false, ruta: 'L. N. Alem ↔ J. M. de Rosas', pico: '3 a 5 min', resto: '6 a 10 min' },
+            C: { color: '#0054a6', dark: false, ruta: 'Retiro ↔ Constitución', pico: '4 a 6 min', resto: '7 a 10 min' },
+            D: { color: '#00a859', dark: false, ruta: 'Catedral ↔ Congreso de Tucumán', pico: '3 a 5 min', resto: '6 a 9 min' },
+            E: { color: '#662483', dark: false, ruta: 'Plaza de los Virreyes ↔ Retiro', pico: '5 a 7 min', resto: '8 a 12 min' },
+            H: { color: '#ffcd00', dark: true, ruta: 'Hospitales ↔ Facultad de Derecho', pico: '4 a 6 min', resto: '7 a 10 min' }
+        };
+        const ORDER = ['A', 'B', 'C', 'D', 'E', 'H'];
+
+        function circulo(line) {
+            const L = estadoLineas[line];
+            const txt = L.dark ? '#212529' : '#ffffff';
+            return '<span class="circulo-linea chico" style="background:' + L.color + ';color:' + txt + '">' + line + '</span>';
+        }
+
+        function llenarTabla() {
+            const body = document.getElementById('tabla-body');
+            if (!body) return;
+            let html = '';
+            for (const k of ORDER) {
+                const L = estadoLineas[k];
+                html += '<tr>';
+                html += '<td><span class="linea-cell">' + circulo(k) + 'Línea ' + k + '</span></td>';
+                html += '<td>' + L.ruta + '</td>';
+                html += '<td class="text-center">05:00</td>';
+                html += '<td class="text-center">22:45</td>';
+                html += '<td class="text-center">' + L.pico + '</td>';
+                html += '<td class="text-center">' + L.resto + '</td>';
+                html += '</tr>';
+            }
+            body.innerHTML = html;
+        }
+
+        function actualizarEstado() {
+            const banner = document.getElementById('estado-banner');
+            const dot = document.getElementById('estado-dot');
+            const texto = document.getElementById('estado-texto');
+            if (!banner || !dot || !texto) return;
+
+            const now = new Date();
+            const day = now.getDay(); // 0 = domingo
+            const h = now.getHours() + now.getMinutes() / 60;
+            let apertura, cierre, etiqueta;
+            if (day === 0) { apertura = 8; cierre = 22; etiqueta = 'Hoy (domingo)'; }
+            else { apertura = 5; cierre = 23; etiqueta = 'Hoy'; }
+
+            const abierto = h >= apertura && h < cierre;
+            const fmt = x => { const hh = Math.floor(x); const mm = Math.round((x - hh) * 60); return (hh < 10 ? '0' + hh : hh) + ':' + (mm < 10 ? '0' + mm : mm); };
+
+            if (abierto) {
+                banner.className = 'badge-estado abierto';
+                dot.className = 'estado-dot on';
+                texto.textContent = 'El subte está abierto ahora · ' + etiqueta + ' hasta las ' + fmt(cierre);
+            } else {
+                banner.className = 'badge-estado cerrado';
+                dot.className = 'estado-dot off';
+                if (h < apertura) texto.textContent = 'El subte está cerrado · ' + etiqueta + ' abre a las ' + fmt(apertura);
+                else texto.textContent = 'El subte está cerrado · ' + etiqueta + ' el servicio finalizó a las ' + fmt(cierre);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            try { llenarTabla(); } catch (e) { console.error(e); }
+            try { actualizarEstado(); setInterval(actualizarEstado, 60000); } catch (e) { console.error(e); }
+        });
+    </script>
+
+    <footer id="footer" style="background-color: #3a3a3a; color: #e0e0e0; padding: 3rem 0 1.5rem; margin-top: 4rem;">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-3 mb-4">
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                        <img src="img/DevVisionIcon.png" alt="TechSolutions" style="height: 40px; margin-right: 10px;">
+                        <h5 style="margin: 0; font-weight: 700;">TechSolutions</h5>
+                    </div>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">Síguenos en nuestras distintas redes sociales:</p>
+                    <a href="#" style="color: #e0e0e0; text-decoration: none; display: inline-block; margin-top: 0.5rem;">
+                        <strong>f Facebook</strong>
+                    </a>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <h5 style="font-weight: 700; margin-bottom: 1.5rem;">Dirección</h5>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">
+                        Av. Siempre Viva 742,<br>
+                        Buenos Aires, Argentina
+                    </p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <h5 style="font-weight: 700; margin-bottom: 1.5rem;">Teléfono de contacto</h5>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">
+                        +54 11 4444-5555<br>
+                        Lunes a Viernes 09:00 - 18:00
+                    </p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <h5 style="font-weight: 700; margin-bottom: 1.5rem;">Medios de pago</h5>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">
+                        Aceptamos tarjetas de crédito, débito y transferencias bancarias.
+                    </p>
+                </div>
+            </div>
+
+            <hr style="border-color: #555; margin: 2rem 0;">
+
+            <div class="text-center">
+                <p style="font-size: 0.85rem; color: #999;">
+                    © 2024 TechSolutions - Todos los derechos reservados - Prohibida la reproducción total o parcial sin permiso
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
