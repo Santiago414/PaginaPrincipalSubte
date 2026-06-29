@@ -177,6 +177,47 @@
             font-size: 0.85rem; 
             color: #999;
         }
+
+        /* =========================================
+           MEDIA QUERY RESPONSIVE Y ACCESIBILIDAD
+           ========================================= */
+        @media all and (max-width: 840px) {
+            /* Ajuste tipográfico fluido */
+            html {
+                font-size: 95%; 
+            }
+
+            /* Optimización de espacios en móviles */
+            .hero {
+                padding: 3rem 1rem 2rem;
+            }
+            .feature-card {
+                padding: 1.25rem;
+            }
+
+            /* Quitar el sticky del chat para que no estorbe el scroll en la pantalla chica */
+            .chat-widget {
+                position: relative;
+                top: 0;
+            }
+
+            /* Accesibilidad táctil: Aumentar el alto mínimo para que sea fácil tocar con el dedo */
+            .chat-input .form-control,
+            .chat-input .btn {
+                min-height: 48px;
+            }
+
+            /* Footer centrado y con mejor separación para lectura en móvil */
+            .custom-footer {
+                text-align: center;
+            }
+            .custom-footer .footer-brand {
+                justify-content: center;
+            }
+            .custom-footer .col-md-3 {
+                margin-bottom: 2rem !important;
+            }
+        }
     </style>
 </head>
 <body>
