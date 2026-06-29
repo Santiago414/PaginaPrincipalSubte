@@ -6,9 +6,8 @@
     <title>Subte de CABA - Inicio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* --- ESTILOS GENERALES Y ACCESIBILIDAD --- */
         html {
-            font-size: 100%; /* Base para que los 'rem' escalen según la configuración del usuario */
+            font-size: 100%;
         }
         body {
             background: linear-gradient(135deg, #f6efff 0%, #efe5ff 100%);
@@ -28,7 +27,6 @@
             color: #ffffff;
         }
 
-        /* --- TARJETAS DE ESTADO --- */
         .tarjeta-estado {
             border: 1px solid #e9ecef;
             border-radius: 1rem;
@@ -79,13 +77,11 @@
             letter-spacing: 0.02em;
         }
 
-        /* --- MAPA INTERACTIVO --- */
         .mapa-scroll-wrapper {
             width: 100%;
-            /* El scroll se activa solo en móviles en el @media query */
         }
         .caja-mapa {
-            position: relative; /* CRÍTICO: Mantiene los puntos anclados adentro */
+            position: relative; 
             width: 100%;
             max-width: 900px;
             margin: 0 auto;
@@ -93,7 +89,6 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             background: #f8f9fa;
             border: 1px solid #e9ecef;
-            /* overflow: hidden; se quita de aquí para que en móvil no corte el tooltip */
         }
         .img-mapa {
             width: 100%;
@@ -102,7 +97,6 @@
             border-radius: 1rem;
         }
 
-        /* --- PUNTOS DEL MAPA --- */
         .punto {
             position: absolute;
             width: 1.375rem;
@@ -123,7 +117,6 @@
             outline: none;
         }
 
-        /* Colores oficiales de las líneas */
         .color-a { border-color: #00aeef; background: #00aeef; }
         .color-b { border-color: #ed1c24; background: #ed1c24; }
         .color-c { border-color: #0054a6; background: #0054a6; }
@@ -131,14 +124,12 @@
         .color-e { border-color: #662483; background: #662483; }
         .color-h { border-color: #ffcd00; background: #ffcd00; }
 
-        /* Posiciones exactas de las estaciones en el mapa */
         .pos-obelisco { top: 60%; left: 88%; }
         .pos-plaza-mayo { top: 62%; left: 92%; }
         .pos-retiro { top: 46%; left: 90%; }
         .pos-derecho { top: 38%; left: 78%; }
         .pos-once { top: 82%; left: 22%; }
 
-        /* --- GLOBO DE INFORMACIÓN (TOOLTIP) --- */
         .globo-info {
             position: absolute;
             bottom: 140%;
@@ -181,7 +172,6 @@
             font-style: normal;
         }
 
-        /* --- LEYENDA DEL MAPA --- */
         .leyenda {
             display: flex;
             flex-wrap: wrap;
@@ -203,7 +193,6 @@
             margin-right: 0.5rem;
         }
 
-        /* --- VENTANA MODAL EMERGENTE --- */
         .fondo-modal {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -249,13 +238,8 @@
         }
         .icono-servicio { font-size: 1.2rem; }
 
-
-        /* =========================================
-           MEDIA QUERY RESPONSIVE (MÓVILES)
-           ========================================= */
         @media all and (max-width: 840px) {
             
-            /* Ajuste tipográfico base */
             html {
                 font-size: 95%; 
             }
@@ -267,13 +251,12 @@
                 font-size: 1.6rem;
             }
             .foto-carrusel {
-                height: 40vh; /* Altura adaptable a la pantalla del celular */
+                height: 40vh; 
                 min-height: 250px;
             }
 
-            /* --- ACCESIBILIDAD TÁCTIL --- */
             .punto {
-                /* Aumentamos el tamaño para que sea fácil tocar con el dedo */
+     
                 width: 1.8rem;
                 height: 1.8rem;
                 border-width: 3px;
@@ -283,16 +266,15 @@
                 padding: 0.75rem 1rem;
             }
 
-            /* --- MAPA CON SCROLL HORIZONTAL --- */
             .mapa-scroll-wrapper {
                 overflow-x: auto;
                 overflow-y: hidden;
-                -webkit-overflow-scrolling: touch; /* Scroll fluido nativo en iOS/Android */
-                padding-bottom: 1rem; /* Espacio para la barra de desplazamiento */
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 1rem;
             }
             
             .caja-mapa {
-                /* Esto obliga al mapa a mantenerse grande, generando el scroll lateral en su padre */
+      
                 min-width: 800px; 
             }
         }
@@ -327,7 +309,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Horarios</a>
+                        <a class="nav-link" href="horarios.html">Horarios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="viajes.html">Consulta de Viajes</a>
@@ -456,7 +438,7 @@
     </section>
 
     <script>
-        // Array de datos de las líneas
+
         const estadoLineas = [
             {id: 'A', nombre: 'Línea A', color: '#00aeef', estado: 'Excelente', texto: 'Servicio normal sin novedades.', nivel: 'good', url: '#linea-a'},
             {id: 'B', nombre: 'Línea B', color: '#ed1c24', estado: 'Demoras', texto: 'Retrasos por obras en estaciones.', nivel: 'alert', url: '#linea-b'},
@@ -504,7 +486,6 @@
             mostrarEstado();
         }
 
-        // --- CÓDIGO DE LA VENTANA MODAL EMERGENTE ---
         const fondoModal = document.createElement('div');
         fondoModal.classList.add('fondo-modal');
         document.body.appendChild(fondoModal);
@@ -561,12 +542,10 @@
             ventanaModal.style.display = 'none';
         }
 
-        // --- INICIALIZACIÓN DE EVENTOS ---
         document.addEventListener('DOMContentLoaded', () => {
             mostrarEstado();
             setInterval(actualizarEstadoReal, 20000);
 
-            // Clics y Accesibilidad en teclado para los puntos del mapa
             document.querySelectorAll('.punto').forEach(punto => {
                 const activarModal = function(e) {
                     e.stopPropagation();
