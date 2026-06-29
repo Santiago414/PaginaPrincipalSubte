@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,9 +22,7 @@
             box-shadow: 0 18px 45px rgba(75, 44, 114, 0.18);
             margin-bottom: 2rem;
         }
-        .page-hero h1 {
-            font-weight: 700;
-        }
+        .page-hero h1 { font-weight: 700; }
         .page-hero p {
             max-width: 760px;
             margin: 0 auto;
@@ -37,8 +35,89 @@
             background: #ffffff;
         }
         .resultado {
-            display: none; /* Se muestra solo al consultar */
+            display: none; 
             margin-top: 2rem;
+        }
+
+        .circulo-linea-sm {
+            width: 2.1rem;
+            height: 2.1rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            flex: 0 0 auto;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        .chip-viaje {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #f4eeff;
+            border: 1px solid #e2d4fb;
+            color: #4b2c72;
+            border-radius: 999px;
+            padding: 0.4rem 0.9rem;
+            font-weight: 600;
+            font-size: 0.92rem;
+        }
+
+        .tramo { --c: #999; }
+        .tramo-cabecera {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 0.9rem 0 0.4rem;
+            font-weight: 600;
+        }
+        .tramo-cabecera small { color: #6c757d; font-weight: 500; }
+        .tramo-track {
+            list-style: none;
+            margin: 0 0 0 0.95rem;
+            padding: 0.2rem 0 0.2rem 1.4rem;
+            border-left: 0.35rem solid var(--c);
+        }
+        .parada { position: relative; padding: 0.35rem 0; }
+        .parada .nodo {
+            position: absolute;
+            left: -1.95rem;
+            top: 0.62rem;
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 50%;
+            background: #fff;
+            border: 0.2rem solid var(--c);
+        }
+        .parada.cab .nodo { width: 1.05rem; height: 1.05rem; left: -2.05rem; top: 0.5rem; }
+        .parada .et { font-weight: 500; }
+        .parada.cab .et { font-weight: 700; }
+        .et-rotulo {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6a4ca1;
+            margin-left: 0.5rem;
+        }
+        .combinacion {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 0.6rem 0 0.6rem 0.95rem;
+            padding: 0.65rem 0.9rem;
+            background: #f4eeff;
+            border: 1px dashed #cdb8f0;
+            border-radius: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        @media all and (max-width: 840px) {
+            html { font-size: 95%; }
+            .page-hero { padding: 1.5rem 1rem; }
         }
     </style>
 </head>
@@ -50,7 +129,7 @@
                 <img src="img/DevVisionIcon.png" alt="Logo Empresa" class="logo">
                 <span class="fw-bold">TechSolutions</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Abrir menú de navegación">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="menu">
@@ -61,11 +140,11 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="lineas" data-bs-toggle="dropdown">Líneas</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="lineas.html?linea=A">Línea A</a></li>
-                            <li><a class="dropdown-item" href="lineas.html?linea=B">Línea B</a></li>
+                            <li><a class="dropdown-item" href="index.html#linea-a">Línea A</a></li>
+                            <li><a class="dropdown-item" href="index.html#linea-b">Línea B</a></li>
                             <li><a class="dropdown-item" href="https://carlosmarinaro.github.io/LINEA-C/#">Línea C</a></li>
                             <li><a class="dropdown-item" href="https://santiago414.github.io/LineaDpaginaWeb/">Línea D</a></li>
-                            <li><a class="dropdown-item" href="#linea-e">Línea E</a></li>
+                            <li><a class="dropdown-item" href="index.html#linea-e">Línea E</a></li>
                             <li><a class="dropdown-item" href="https://valentinasalinasc.github.io/lineahsubte/">Línea H</a></li>
                         </ul>
                     </li>
@@ -74,7 +153,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="accesibilidad.html">Accesibilidad</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#footer">Contacto</a></li>
                 </ul>
             </div>
         </div>
@@ -84,36 +163,26 @@
         <div class="page-hero text-center mb-4">
             <h1 class="display-6 fw-bold mb-3">Tu viaje en subte, pensado para moverte mejor</h1>
             <p class="lead mx-auto">
-                Planificá tu recorrido por la ciudad con información clara, rutas simples y consejos para llegar a tu destino sin complicaciones.
+                Planificá tu recorrido por toda la red de subtes y premetro. Elegí estación de origen y destino, y te mostramos el camino con las combinaciones, las estaciones y el tiempo estimado.
             </p>
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-lg-7 col-md-9">
                 <div class="card travel-card border-0">
                     <div class="card-body p-4">
-                        <h2 class="card-title text-center mb-4">Planificá tu Viaje</h2>
+                        <h2 class="card-title text-center mb-4">Planificá tu viaje</h2>
                         <form id="form">
                             <div class="mb-3">
                                 <label for="origen" class="form-label">¿Desde dónde salís?</label>
                                 <select class="form-select" id="origen" required>
-                                    <option value="" selected disabled>Seleccioná un punto de partida</option>
-                                    <option value="retiro">Retiro</option>
-                                    <option value="plaza_italia">Plaza Italia</option>
-                                    <option value="once">Once</option>
-                                    <option value="palermo">Palermo</option>
-                                    <option value="constitucion">Constitución</option>
+                                    <option value="" selected disabled>Seleccioná la estación de origen</option>
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="destino" class="form-label">¿A qué punto de interés vas?</label>
+                                <label for="destino" class="form-label">¿A dónde vas?</label>
                                 <select class="form-select" id="destino" required>
-                                    <option value="" selected disabled>Seleccioná un destino</option>
-                                    <option value="obelisco">El Obelisco</option>
-                                    <option value="casa_rosada">Casa Rosada</option>
-                                    <option value="cementerio_recoleta">Cementerio de la Recoleta</option>
-                                    <option value="planetario">Planetario Galileo Galilei</option>
-                                    <option value="abasto">Abasto Shopping</option>
+                                    <option value="" selected disabled>Seleccioná la estación de destino</option>
                                 </select>
                             </div>
                             <div class="d-grid">
@@ -125,125 +194,244 @@
 
                 <div id="cuadro" class="card resultado shadow border-0">
                     <div class="card-header bg-dark text-white text-center">
-                        <h4 class="mb-0">Ruta Recomendada</h4>
+                        <h4 class="mb-0">Ruta recomendada</h4>
                     </div>
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <strong>Línea/s:</strong>
-                                <span id="txt-linea" class="badge bg-primary rounded-pill fs-6"></span>
-                            </li>
-                            <li class="list-group-item"><strong>Combinación:</strong> <span id="txt-combinacion"></span></li>
-                            <li class="list-group-item"><strong>Estaciones:</strong> <span id="txt-estacion" class="fw-bold"></span></li>
-                            <li class="list-group-item"><strong>Desde dónde salís:</strong> <span id="txt-origen"></span></li>
-                            <li class="list-group-item"><strong>Sector de salida:</strong> <span id="txt-salida"></span></li>
-                            <li class="list-group-item"><strong>Tiempo estimado:</strong> <span id="txt-tiempo"></span></li>
-                            <li class="list-group-item"><strong>Costo del pasaje:</strong> <span id="txt-costo" class="text-success fw-bold"></span></li>
-                        </ul>
-                    </div>
+                    <div class="card-body" id="salida-ruta"></div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // CORRECCIÓN: Constitución es Línea C, no A.
-        const datosOrigen = {
-            "retiro": { nombre: "Retiro", estacion: "Retiro", salida: "Av. Ramos Mejía y Alem", delta: 0, linea: "Línea C", lineaCode: "C" },
-            "plaza_italia": { nombre: "Plaza Italia", estacion: "Plaza Italia", salida: "Av. Santa Fe y Pueyrredón", delta: 3, linea: "Línea D", lineaCode: "D" },
-            "once": { nombre: "Once", estacion: "Plaza Miserere / Once", salida: "Av. Rivadavia y Pueyrredón", delta: 4, linea: "Línea H", lineaCode: "H" },
-            "palermo": { nombre: "Palermo", estacion: "Palermo", salida: "Av. Santa Fe y 3 de Febrero", delta: 6, linea: "Línea D", lineaCode: "D" },
-            "constitucion": { nombre: "Constitución", estacion: "Constitución", salida: "Av. Brasil y Lima", delta: 2, linea: "Línea C", lineaCode: "C" }
+        var LINES = {
+            A: { color: "#00aeef", dark: false, stations: ["Plaza de Mayo","Perú","Piedras","Lima","Sáenz Peña","Congreso","Pasco","Alberti","Plaza Miserere","Loria","Castro Barros","Río de Janeiro","Acoyte","Primera Junta","Puan","Carabobo","San José de Flores","San Pedrito"] },
+            B: { color: "#ed1c24", dark: false, stations: ["Leandro N. Alem","Florida","Carlos Pellegrini","Uruguay","Callao","Pasteur","Pueyrredón","Carlos Gardel","Medrano","Ángel Gallardo","Malabia","Dorrego","Federico Lacroze","Tronador","Los Incas","Echeverría","Juan Manuel de Rosas"] },
+            C: { color: "#0054a6", dark: false, stations: ["Retiro","General San Martín","Lavalle","Diagonal Norte","Avenida de Mayo","Moreno","Independencia","San Juan","Constitución"] },
+            D: { color: "#00a859", dark: false, stations: ["Catedral","9 de Julio","Tribunales","Callao","Facultad de Medicina","Pueyrredón","Agüero","Bulnes","Scalabrini Ortiz","Plaza Italia","Palermo","Ministro Carranza","Olleros","José Hernández","Juramento","Congreso de Tucumán"] },
+            E: { color: "#662483", dark: false, stations: ["Plaza de los Virreyes","Varela","Medalla Milagrosa","Emilio Mitre","José María Moreno","Avenida La Plata","Boedo","General Urquiza","Jujuy","Pichincha","Entre Ríos","San José","Independencia","Belgrano","Bolívar","Correo Central","Catalinas","Retiro"] },
+            H: { color: "#ffcd00", dark: true, stations: ["Hospitales","Caseros","Inclán","Humberto 1°","Venezuela","Once","Corrientes","Córdoba","Santa Fe","Las Heras","Facultad de Derecho"] }
         };
 
-        const datosDestinos = {
-            "obelisco": { linea: "Línea D", lineaCode: "D", estacion: "9 de Julio", salida: "Av. Corrientes y 9 de Julio", tiempoBase: 12 },
-            "casa_rosada": { linea: "Línea A", lineaCode: "A", estacion: "Plaza de Mayo", salida: "Calle Hipólito Yrigoyen", tiempoBase: 5 },
-            "cementerio_recoleta": { linea: "Línea H", lineaCode: "H", estacion: "Las Heras", salida: "Av. Las Heras y Pueyrredón", tiempoBase: 18 },
-            "planetario": { linea: "Línea D", lineaCode: "D", estacion: "Palermo", salida: "Av. Santa Fe y Av. Sarmiento", tiempoBase: 25 },
-            "abasto": { linea: "Línea B", lineaCode: "B", estacion: "Carlos Gardel", salida: "Av. Corrientes y Agüero", tiempoBase: 10 }
-        };
+        var TRANSFERS = [
+            ["A|Perú", "D|Catedral"],
+            ["A|Lima", "C|Avenida de Mayo"],
+            ["A|Plaza Miserere", "H|Once"],
+            ["B|Carlos Pellegrini", "C|Diagonal Norte"],
+            ["B|Carlos Pellegrini", "D|9 de Julio"],
+            ["C|Diagonal Norte", "D|9 de Julio"],
+            ["B|Pueyrredón", "H|Corrientes"],
+            ["C|Independencia", "E|Independencia"],
+            ["C|Retiro", "E|Retiro"]
+        ];
 
-        document.getElementById('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const origenSel = document.getElementById('origen').value;
-            const destinoSel = document.getElementById('destino').value;
-            const origen = datosOrigen[origenSel];
-            const destino = datosDestinos[destinoSel];
+        var RIDE_COST = 1;
+        var TRANSFER_COST = 4;
+        var MIN_PER_STOP = 2;
+        var MIN_PER_TRANSFER = 5;
+        var TARIFA = "$1.250 (tarifa plana)";
 
-            let combinacion = 'Viaje directo (Sin combinaciones)';
-            let lineaRecomendada = origen.linea;
-            
-            // Calculamos tiempo base
-            let tiempoEstimado = destino.tiempoBase + origen.delta;
+        var ORDER = ["A", "B", "C", "D", "E", "H"];
 
-            // Lógica si hay que combinar líneas
-            if (origen.lineaCode && destino.lineaCode && origen.lineaCode !== destino.lineaCode) {
-                lineaRecomendada = `${origen.linea} ➔ ${destino.linea}`;
-                tiempoEstimado += 5; // Sumamos 5 minutos extra por la transferencia
+        function buildGraph() {
+            var adj = new Map();
+            function link(a, b, cost) {
+                if (!adj.has(a)) adj.set(a, []);
+                adj.get(a).push({ to: b, cost: cost });
+            }
+            for (var k in LINES) {
+                var sts = LINES[k].stations;
+                for (var i = 0; i < sts.length; i++) {
+                    var cur = k + "|" + sts[i];
+                    if (!adj.has(cur)) adj.set(cur, []);
+                    if (i > 0) {
+                        var prev = k + "|" + sts[i - 1];
+                        link(cur, prev, RIDE_COST);
+                        link(prev, cur, RIDE_COST);
+                    }
+                }
+            }
+            for (var t = 0; t < TRANSFERS.length; t++) {
+                link(TRANSFERS[t][0], TRANSFERS[t][1], TRANSFER_COST);
+                link(TRANSFERS[t][1], TRANSFERS[t][0], TRANSFER_COST);
+            }
+            return adj;
+        }
 
-                // Diccionario de Nodos Reales de Combinación (Origen -> Destino)
-                const estacionesTransferencia = {
-                    'A-C': { de: 'Lima', a: 'Avenida de Mayo' },
-                    'C-A': { de: 'Avenida de Mayo', a: 'Lima' },
-                    'A-D': { de: 'Perú', a: 'Catedral' },
-                    'D-A': { de: 'Catedral', a: 'Perú' },
-                    'A-E': { de: 'Perú', a: 'Bolívar' },
-                    'E-A': { de: 'Bolívar', a: 'Perú' },
-                    'A-H': { de: 'Plaza Miserere', a: 'Once' },
-                    'H-A': { de: 'Once', a: 'Plaza Miserere' },
-                    
-                    'B-C': { de: 'Carlos Pellegrini', a: 'Diagonal Norte' },
-                    'C-B': { de: 'Diagonal Norte', a: 'Carlos Pellegrini' },
-                    'B-D': { de: 'Carlos Pellegrini', a: '9 de Julio' },
-                    'D-B': { de: '9 de Julio', a: 'Carlos Pellegrini' },
-                    'B-E': { de: 'Leandro N. Alem', a: 'Correo Central' },
-                    'E-B': { de: 'Correo Central', a: 'Leandro N. Alem' },
-                    'B-H': { de: 'Pueyrredón', a: 'Corrientes' },
-                    'H-B': { de: 'Corrientes', a: 'Pueyrredón' },
-                    
-                    'C-D': { de: 'Diagonal Norte', a: '9 de Julio' },
-                    'D-C': { de: '9 de Julio', a: 'Diagonal Norte' },
-                    'C-E': { de: 'Retiro', a: 'Retiro' },
-                    'E-C': { de: 'Retiro', a: 'Retiro' },
-                    
-                    'D-E': { de: 'Catedral', a: 'Bolívar' },
-                    'E-D': { de: 'Bolívar', a: 'Catedral' },
-                    'D-H': { de: 'Pueyrredón', a: 'Santa Fe' },
-                    'H-D': { de: 'Santa Fe', a: 'Pueyrredón' },
-                    
-                    'E-H': { de: 'Jujuy', a: 'Humberto 1°' },
-                    'H-E': { de: 'Humberto 1°', a: 'Jujuy' }
-                };
+        function dijkstra(adj, start, goal) {
+            if (start === goal) return [start];
+            var dist = new Map(), prev = new Map(), done = new Set();
+            adj.forEach(function (_, n) { dist.set(n, Infinity); });
+            dist.set(start, 0);
+            while (true) {
+                var u = null, best = Infinity;
+                dist.forEach(function (d, n) { if (!done.has(n) && d < best) { best = d; u = n; } });
+                if (u === null || u === goal) break;
+                done.add(u);
+                var edges = adj.get(u) || [];
+                for (var i = 0; i < edges.length; i++) {
+                    var e = edges[i];
+                    if (done.has(e.to)) continue;
+                    var nd = dist.get(u) + e.cost;
+                    if (nd < dist.get(e.to)) { dist.set(e.to, nd); prev.set(e.to, u); }
+                }
+            }
+            if (!prev.has(goal)) return null;
+            var path = [], cur = goal;
+            while (cur !== undefined) { path.push(cur); if (cur === start) break; cur = prev.get(cur); }
+            path.reverse();
+            return path[0] === start ? path : null;
+        }
 
-                const ruta = `${origen.lineaCode}-${destino.lineaCode}`;
-                const transferInfo = estacionesTransferencia[ruta];
-
-                if (transferInfo) {
-                    combinacion = `Bajate en estación ${transferInfo.de} y caminá hacia la estación ${transferInfo.a} (${destino.linea}).`;
+        function buildLegs(path) {
+            var legs = [], cur = null;
+            for (var i = 0; i < path.length; i++) {
+                var node = path[i];
+                var idx = node.indexOf("|");
+                var line = node.slice(0, idx), station = node.slice(idx + 1);
+                if (!cur || cur.line !== line) {
+                    if (cur) legs.push(cur);
+                    cur = { line: line, stations: [station] };
                 } else {
-                    combinacion = 'Requiere múltiples combinaciones (Ej: Pasar por la Línea C en el medio).';
+                    cur.stations.push(station);
+                }
+            }
+            if (cur) legs.push(cur);
+            for (var j = 0; j < legs.length; j++) {
+                var leg = legs[j], sts = LINES[leg.line].stations;
+                leg.board = leg.stations[0];
+                leg.exit = leg.stations[leg.stations.length - 1];
+                leg.stops = leg.stations.length - 1;
+                var bi = sts.indexOf(leg.board), ei = sts.indexOf(leg.exit);
+                leg.terminal = (ei === bi) ? null : (ei > bi ? sts[sts.length - 1] : sts[0]);
+            }
+            return legs;
+        }
+
+        /* ====== Render ====== */
+        function circulo(line) {
+            var L = LINES[line];
+            var txt = L.dark ? "#212529" : "#ffffff";
+            return '<span class="circulo-linea-sm" style="background:' + L.color + ';color:' + txt + '">' + line + '</span>';
+        }
+
+        function rotulo(texto) {
+            return '<span class="et-rotulo">' + texto + '</span>';
+        }
+
+        function renderResultado(legs, oNombre, dNombre) {
+            var transfers = legs.length - 1;
+            var totalStops = 0;
+            for (var i = 0; i < legs.length; i++) totalStops += legs[i].stops;
+            var minutes = totalStops * MIN_PER_STOP + transfers * MIN_PER_TRANSFER;
+            var comboTxt = transfers === 0 ? "Viaje directo, sin combinaciones." : "";
+
+            var lineasHtml = "";
+            var vistas = {};
+            for (var l = 0; l < legs.length; l++) {
+                if (!vistas[legs[l].line]) { lineasHtml += circulo(legs[l].line) + " "; vistas[legs[l].line] = true; }
+            }
+
+            var html = "";
+
+            html += '<div class="d-flex flex-wrap align-items-center gap-2 mb-3">';
+            html += '<span class="chip-viaje">🕒 ~' + minutes + ' min</span>';
+            html += '<span class="chip-viaje">🚉 ' + totalStops + (totalStops === 1 ? ' estación' : ' estaciones') + '</span>';
+            html += '<span class="chip-viaje">🔁 ' + (transfers === 0 ? 'Directo' : (transfers === 1 ? '1 combinación' : transfers + ' combinaciones')) + '</span>';
+            html += '</div>';
+
+            html += '<h6 class="fw-bold text-uppercase text-secondary mb-2" style="letter-spacing:.04em;">Paso a paso</h6>';
+            for (var k = 0; k < legs.length; k++) {
+                var leg = legs[k], L = LINES[leg.line];
+                var dir = leg.terminal ? ' <small>· sentido ' + leg.terminal + '</small>' : '';
+                html += '<div class="tramo" style="--c:' + L.color + '">';
+                html += '<div class="tramo-cabecera">' + circulo(leg.line) + '<span>Línea ' + leg.line + dir + '</span></div>';
+                html += '<ul class="tramo-track">';
+                var single = leg.stations.length === 1;
+                for (var s = 0; s < leg.stations.length; s++) {
+                    var first = s === 0, last = s === leg.stations.length - 1, cab = first || last;
+                    var tag = "";
+                    if (single) tag = rotulo("salís acá");
+                    else if (first) tag = rotulo("subí acá");
+                    else if (last) tag = rotulo("bajá acá");
+                    html += '<li class="parada' + (cab ? ' cab' : '') + '"><span class="nodo"></span><span class="et">' + leg.stations[s] + '</span>' + tag + '</li>';
+                }
+                html += '</ul>';
+                html += '</div>';
+
+                if (k < legs.length - 1) {
+                    var next = legs[k + 1];
+                    var donde = (leg.exit === next.board)
+                        ? ('en <strong>' + leg.exit + '</strong>')
+                        : ('en <strong>' + leg.exit + '</strong> y caminá hacia <strong>' + next.board + '</strong>');
+                    html += '<div class="combinacion">' + circulo(next.line) + '<span>Combiná con la <strong>Línea ' + next.line + '</strong> ' + donde + '</span></div>';
+                    comboTxt += (comboTxt ? " " : "") + "Combinás en " + leg.exit + " (" + leg.line + " → " + next.line + ").";
                 }
             }
 
-            // CORRECCIÓN: El Subte tiene una tarifa plana, no se cobra por distancia/tiempo.
-            const costoEstimado = `Tarifa Plana $1250.00`; 
+            html += '<ul class="list-group list-group-flush mt-3">';
+            html += '<li class="list-group-item d-flex justify-content-between align-items-center px-0"><strong>Líneas</strong><span>' + lineasHtml + '</span></li>';
+            html += '<li class="list-group-item px-0"><strong>Combinación:</strong> ' + comboTxt + '</li>';
+            html += '<li class="list-group-item px-0"><strong>Recorrido:</strong> ' + oNombre + ' ➔ ' + dNombre + '</li>';
+            html += '<li class="list-group-item px-0"><strong>Estaciones:</strong> <span class="fw-bold">' + totalStops + '</span></li>';
+            html += '<li class="list-group-item px-0"><strong>Tiempo estimado:</strong> ~' + minutes + ' minutos</li>';
+            html += '<li class="list-group-item px-0"><strong>Tarifa:</strong> <span class="text-success fw-bold">' + TARIFA + '</span></li>';
+            html += '</ul>';
 
-            // Actualizar el DOM con la información
-            document.getElementById('txt-linea').innerText = lineaRecomendada;
-            document.getElementById('txt-combinacion').innerText = combinacion;
-            document.getElementById('txt-estacion').innerText = `${origen.estacion} ➔ ${destino.estacion}`;
-            document.getElementById('txt-origen').innerText = origen.nombre || 'No seleccionado';
-            document.getElementById('txt-salida').innerText = `${origen.salida} ➔ ${destino.salida}`;
-            document.getElementById('txt-tiempo').innerText = `~${tiempoEstimado} minutos`;
-            document.getElementById('txt-costo').innerText = costoEstimado;
+            html += '<p class="text-muted small mt-3 mb-0">Recorrido calculado sobre la red de subtes y premetro. Los tiempos son estimados y no contemplan esperas ni el estado del servicio en tiempo real.</p>';
 
-            // Mostrar la tarjeta de resultados
-            document.getElementById('cuadro').style.display = 'block';
+            return html;
+        }
+
+        function nombreNodo(value) {
+            var idx = value.indexOf("|");
+            return value.slice(idx + 1) + " (Línea " + value.slice(0, idx) + ")";
+        }
+
+        function llenarSelect(sel) {
+            var html = '<option value="" selected disabled>' + sel.options[0].text + '</option>';
+            for (var o = 0; o < ORDER.length; o++) {
+                var k = ORDER[o];
+                html += '<optgroup label="Línea ' + k + '">';
+                var sts = LINES[k].stations;
+                for (var i = 0; i < sts.length; i++) {
+                    html += '<option value="' + k + '|' + sts[i] + '">' + sts[i] + '</option>';
+                }
+                html += '</optgroup>';
+            }
+            sel.innerHTML = html;
+        }
+
+        var adj = buildGraph();
+
+        document.addEventListener("DOMContentLoaded", function () {
+            llenarSelect(document.getElementById("origen"));
+            llenarSelect(document.getElementById("destino"));
+
+            document.getElementById("form").addEventListener("submit", function (e) {
+                e.preventDefault();
+                var o = document.getElementById("origen").value;
+                var d = document.getElementById("destino").value;
+                var cuadro = document.getElementById("cuadro");
+                var salida = document.getElementById("salida-ruta");
+
+                if (o === d) {
+                    salida.innerHTML = '<p class="text-center text-muted mb-0">El origen y el destino son la misma estación. Probá con estaciones distintas.</p>';
+                    cuadro.style.display = "block";
+                    return;
+                }
+                var path = dijkstra(adj, o, d);
+                if (!path) {
+                    salida.innerHTML = '<p class="text-center text-muted mb-0">No encontramos un recorrido entre esas estaciones. Revisá la selección.</p>';
+                    cuadro.style.display = "block";
+                    return;
+                }
+                salida.innerHTML = renderResultado(buildLegs(path), nombreNodo(o), nombreNodo(d));
+                cuadro.style.display = "block";
+                cuadro.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            });
         });
     </script>
 
-    <!-- Footer -->
     <footer style="background-color: #3a3a3a; color: #e0e0e0; padding: 3rem 0 1.5rem;">
         <div class="container">
             <div class="row mb-4">
